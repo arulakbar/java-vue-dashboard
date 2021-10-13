@@ -1,9 +1,10 @@
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/ecommerce
     username: postgres
     password: 1234
-  sql:
-    init:
-      mode: always

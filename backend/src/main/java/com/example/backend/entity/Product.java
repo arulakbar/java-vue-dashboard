@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -26,9 +28,12 @@ public class Product {
     private double price;
     @Column(name = "image_url")
     private String imageUrl;
-    private String category;
 
-    public Product(String productName, String description, double price, String imageUrl, String category) {
+    @OneToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public Product(String productName, String description, double price, String imageUrl, Category category) {
         this.productName = productName;
         this.description = description;
         this.price = price;
@@ -76,11 +81,11 @@ public class Product {
         this.imageUrl = imageUrl;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

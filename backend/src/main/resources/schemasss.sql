@@ -1,9 +1,0 @@
--- CREATE TABLE IF NOT EXISTS product(
---     id SERIAL NOT NULL,
---     product_name VARCHAR(45) NOT NULL,
---     description VARCHAR(200) NOT NULL,
---     price VARCHAR(45) NOT NULL,
---     image_url VARCHAR(45) NOT NULL,
---     category VARCHAR(45) NOT NULL,
---     PRIMARY KEY (id)
--- );

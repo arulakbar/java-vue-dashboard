@@ -1,5 +1,7 @@
 package com.example.backend.dto;
 
+import com.example.backend.entity.Category;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +13,7 @@ public class ProductDto {
     private String description;
     private double price;
     private String imageUrl;
-    private String category;
+    private Category category;
 
     // public ProductDto(Integer id, String productName, String description, double
     // price, String imageUrl,
@@ -24,7 +26,7 @@ public class ProductDto {
     // this.itegory = category;
     // }
 
-    public ProductDto(String productName, String description, double price, String imageUrl, String category) {
+    public ProductDto(String productName, String description, double price, String imageUrl, Category category) {
         this.productName = productName;
         this.description = description;
         this.price = price;
@@ -72,11 +74,11 @@ public class ProductDto {
         this.imageUrl = imageUrl;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
