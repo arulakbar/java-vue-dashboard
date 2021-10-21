@@ -1,25 +1,25 @@
 package com.example.backend.mapper;
 
+import java.util.List;
+
 import com.example.backend.dto.ProductDto;
 import com.example.backend.entity.Product;
 
+import com.example.backend.repository.CategoryRepository;
+import com.example.backend.service.CategoryService;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mappings;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
-public interface ProductMapper {
-        // @Mappings({ @Mapping(target = "productName", source = "productName"),
-        // @Mapping(target = "description", source = "description"), @Mapping(target =
-        // "price", source = "price"),
-        // @Mapping(target = "imageUrl", source = "imageUrl"), @Mapping(target =
-        // "category", source = "category") })
-        ProductDto toProductDto(Product product);
+@Mapper(componentModel = "spring", uses = {CategoryMapper.class})
+public interface ProductMapper extends EntityMapper<ProductDto,Product> {
+//    Product toEntity(ProductDto productDto);
 
-        // @Mappings({ @Mapping(target = "productName", source = "productName"),
-        // @Mapping(target = "description", source = "description"), @Mapping(target =
-        // "price", source = "price"),
-        // @Mapping(target = "imageUrl", source = "imageUrl"), @Mapping(target =
-        // "category", source = "category") })
-        Product productDtoToProduct(ProductDto productDto);
+    @Override
+    @Mapping(target = "categoryId", source = "category.id")
+    ProductDto toDto(Product product);
+
+    @Override
+    @Mapping(target = "category", source = "categoryId")
+    Product toEntity(ProductDto dto);
 }
